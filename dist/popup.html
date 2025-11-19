@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>QuickPress Popup</title>
+    <style>
+      :root {
+        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+        background: #f4f6fb;
+        color: #1b2430;
+      }
+      body {
+        margin: 0;
+        padding: 16px;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      h1,
+      h2 {
+        margin: 0 0 8px;
+      }
+      button {
+        background: #2563eb;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 16px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      }
+      #status,
+      #shortcut-status {
+        margin-top: 12px;
+        font-size: 13px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 13px;
+      }
+      .field input[type="text"] {
+        border: 1px solid #cbd5f5;
+        border-radius: 8px;
+        padding: 8px 10px;
+        font-size: 14px;
+      }
+      .shortcut-modifiers {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        font-size: 13px;
+      }
+      .shortcut-modifiers label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      input[type="checkbox"] {
+        accent-color: #2563eb;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <h1>QuickPress</h1>
+      <p>Highlight the active tab body with one click.</p>
+      <button id="highlight">Highlight page</button>
+      <p id="status" role="status">Idle</p>
+    </section>
+
+    <section class="card">
+      <h2>Overlay Shortcut</h2>
+      <form id="shortcut-form">
+        <div class="field">
+          <span>Shortcut key</span>
+          <input
+            id="shortcut-key"
+            name="shortcutKey"
+            type="text"
+            maxlength="1"
+            required
+            autocomplete="off"
+          />
+        </div>
+        <div class="shortcut-modifiers">
+          <label>
+            <input type="checkbox" id="shortcut-ctrl" />
+            Ctrl
+          </label>
+          <label>
+            <input type="checkbox" id="shortcut-alt" />
+            Alt
+          </label>
+          <label>
+            <input type="checkbox" id="shortcut-shift" />
+            Shift
+          </label>
+          <label>
+            <input type="checkbox" id="shortcut-meta" />
+            Meta (⌘)
+          </label>
+        </div>
+        <button type="submit" id="save-shortcut">Save shortcut</button>
+      </form>
+      <p id="shortcut-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
+

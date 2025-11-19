@@ -1,0 +1,24 @@
+{
+  "name": "quickpress-extension",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Starter Chrome extension built with TypeScript.",
+  "scripts": {
+    "clean": "rimraf dist",
+    "type-check": "tsc --noEmit",
+    "build:code": "tsup",
+    "copy-static": "cpx \"public/**/*\" dist",
+    "build": "npm-run-all clean build:code copy-static",
+    "dev:code": "tsup --watch",
+    "dev:static": "cpx \"public/**/*\" dist --watch --verbose",
+    "dev": "npm-run-all --parallel dev:code dev:static"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.29",
+    "cpx": "^1.5.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^5.0.7",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "QuickPress Helper",
+  "version": "0.1.0",
+  "description": "Sample Chrome extension scaffolded with TypeScript.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+  "48": "icon.png",
+  "96": "icon.png"
+  },
+  "background": {
+    "scripts": [ "background.js" ],
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "itsurgrandma70@gmail.com",
+      "strict_min_version": "121.0",
+      "data_collection_permissions": {
+        "required": ["websiteContent"]
+      }
+    }
+  }
+}
+
